@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style1.css')}}">
+
+
+{% endblock %}
+
+{% block body %}
+
+	<section class="section-inscription">
+
+		<div class="espace"></div>
+
+		<div class="container">
+			<div class="intro-text">
+				<br/>
+
+				<div class="col-sm-8 col-sm-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong>
+								Modifier une tâche
+							</strong>
+						</div>
+						<div class="panel-body">
+							<br>
+							{{form_start(taskForm)}}
+
+							<!-- title -->
+							<div class="form-group has-feedback">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="fas fa-tasks"></i>
+									</span>
+								</span>
+								{{ form_widget(taskForm.title, {'attr': {'class': 'form-control ','placeholder': 'Titre'}}) }}
+
+							</div>
+						</div>
+
+
+						<!-- subject -->
+						<div class="form-group has-feedback">
+							<div class="input-group">
+
+								<span class="input-group-addon">
+									<i class="fas fa-tasks"></i>
+								</span>
+							</span>
+
+							{{ form_widget(taskForm.subject, {'attr': {'class': 'form-control ','placeholder': 'Sujet'}}) }}
+
+						</div>
+
+					</div>
+
+
+					<!-- description -->
+					<div class="form-group has-feedback">
+						<div class="input-group">
+							<span class="input-group-addon">
+								<i class="fas fa-tasks"></i>
+							</span>
+							{{ form_widget(taskForm.description, {'attr': {'class': 'form-control ','placeholder': 'Description'}}) }}
+
+						</div>
+					</div>
+					<!-- status -->
+					<div class="form-group has-feedback">
+						<div class="input-group">
+							<span class="input-group-addon">
+								<i class="fas fa-tasks"></i>
+							</span>
+							{{ form_widget(taskForm.status, {'attr': {'class': 'form-control ','placeholder': 'Statut'}}) }}
+
+						</div>
+					</div>
+					<!-- responsable -->
+					<div class="form-group has-feedback">
+						<div class="input-group">
+							<span class="input-group-addon">
+								<i class="fas fa-tasks"></i>
+							</span>
+							{{ form_widget(taskForm.user_affect, {'attr': {'class': 'form-control ','placeholder': 'responsable'}}) }}
+
+						</div>
+					</div>
+
+					<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+				</div>
+
+
+				<!-- Message Errors-->
+				{% set formErrors = taskForm.vars.errors.form.getErrors(true) %}
+
+				{% if formErrors|length %}
+					<div class="alert alert-danger">
+						<ul>
+							{% for error in formErrors %}
+								<li>
+									{{ error.message}}</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% endif %}
+				<!-- Button -->
+				<div class="panel-footer text-center">
+					<input id="submitForm" type="submit" value="Modifier" class="btn btn-success"></input>
+			</div>
+
+			{{ form_widget(taskForm._token) }}
+			<!-- render the CSRF Token-->
+
+			{{ form_end(taskForm,{'render_rest': false})}}
+			<!-- do not render anything else-->
+
+
+		</div>
+
+	</div>
+</div></div></div><br><br><div class="espace"></div></section>{% endblock %}{% block javascripts %}{% endblock %}

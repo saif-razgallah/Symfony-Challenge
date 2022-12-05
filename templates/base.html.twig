@@ -1,19 +1,119 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		{% block stylesheets %}{% endblock %}
+		<link rel="stylesheet" type="text/css" href="{{asset('css/vendors/bootstrap.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{asset('css/vendors/font-awesome.min.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{asset('css/style1.css')}}">
+		<script src="{{asset('js/vendors/jquery-1.7.1.js.téléchargement')}}"></script>
+		<script src="{{asset('js/vendors/scripts.js.téléchargement')}}"></script>
+
+		<link
+		rel="stylesheet" href="{{asset('css/layout.min.css')}}">
+		<!-- Script for fontawesome 4.7 or 5 -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"/>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+
+		<!--  **************************** Menu ************************* -->
+
+		<div class="header-container container-fluid">
+			<div class="row-fluid-wrapper row-number-1 ">
+				<div class="row-fluid ">
+					<div class="row-fluid-wrapper row-number-1 ">
+						<div class="row-fluid ">
+							<div class="row-fluid-wrapper">
+								<div class="row-fluid">
+									<div class="span3 top-logo">
+										<div class="cell-wrapper layout-widget-wrapper">
+											<span class="hs_cos_wrapper">
+												<a href="#">
+													<a href="{{path('app_main')}}" style="color:rgba(103,76,167,1);text-decoration: none;">
+														<h2>LinKiVia</h2>
+													</a>
+												</a>
+											</span>
+										</div>
+										<!--end layout-widget-wrapper -->
+									</div>
+									<!--end widget-span -->
+									<div class="span9">
+										<div class="row-fluid-wrapper">
+											<div class="row-fluid">
+												<div class="span12 top-menu">
+													<div class="hs-menu-wrapper hs-menu-flow-horizontal">
+														<ul>
+
+															{%if app.user %}
+																{% if app.user.roles[0] == 'ROLE_ADMIN' %}
+																	<li class="hs-menu-item hs-menu-depth-1">
+																		<a href="{{path('list_task')}}">Gestion des tâches</a>
+																	</li>
+																	<li class="hs-menu-item hs-menu-depth-1">
+																		<a href="#">Gestion des utilisateurs</a>
+																	</li>
+
+																{% else %}
+																	<li class="hs-menu-item hs-menu-depth-1">
+																		<a href="{{path('list_task')}}">mes tâches</a>
+																	</li>
+
+																{% endif %}
+																<li class="hs-menu-item hs-menu-depth-1" style="text-decoration: none">
+																	<a href="{{path('app_logout')}}">Se déconnecter</a>
+																</li>
+
+															{% else %}
+																<li class="hs-menu-item hs-menu-depth-1" style="text-decoration: none">
+																	<a href="{{path('app_register')}}">S'inscrire</a>
+																</li>
+																<li class="hs-menu-item hs-menu-depth-1">
+																	<a href="{{path('app_login')}}">Se connecter</a>
+																</li>
+															{% endif %}
+
+														</ul>
+													</div>
+												</div>
+												<!--end widget-span -->
+											</div>
+											<!--end row-->
+										</div>
+										<!--end row-wrapper -->
+									</div>
+									<!--end widget-span -->
+								</div>
+								<!--end row-->
+							</div>
+							<!--end row-wrapper -->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end row-wrapper -->
+				</div>
+				<!--end row-->
+			</div>
+			<!--end row-wrapper -->
+		</div>
+		<!--end header -->
+
+
+		<!-- ************************* / Menu **************************************-->
+
+		<!-- Script General--><script src="{{asset('js/vendors/jquery-3.4.1.min.js')}}"> </script>
+		<script src="{{asset('js/vendors/bootstrap.js')}}"></script>
+
+
+		{% block body %}{% endblock %}
+
+
+		{% block javascripts %}{% endblock %}
+	</body>
 </html>

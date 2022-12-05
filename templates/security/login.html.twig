@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style1.css')}}">
+
+
+{% endblock %}
+
+{% block body %}
+
+	<section class="section-inscription">
+
+		<div class="espace"></div>
+
+		<div class="container">
+			<div class="intro-text">
+				<br/>
+
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong>
+								Connexion à votre compte
+							</strong>
+						</div>
+						<div class="panel-body">
+							<br>
+							<form method="post">
+								{% if error %}
+									<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+								{% endif %}
+
+								{% if app.user %}
+									<div class="mb-3">
+										Vous etes connecté(e) comme
+										{{ app.user.userIdentifier }},
+										<a href="{{ path('app_logout') }}">se déconnecter</a>
+									</div>
+								{% endif %}
+
+								<!-- First name -->
+								<div class="form-group has-feedback">
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="glyphicon glyphicon-user"></i>
+										</span>
+										<input type="email" value="{{ last_username }}" placeholder="Email" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+
+									</div>
+
+								</div>
+
+
+								<!-- Last name -->
+								<div class="form-group has-feedback">
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="glyphicon glyphicon-user"></i>
+										</span>
+										<input type="password" name="password" placeholder="Mot de Passe" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+									</div>
+
+								</div>
+
+
+								<input
+								type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+								<!-- Button -->
+								<div class="form-group ">
+									<input id="submitForm" type="submit" value="Créer mon compte" class="btn btn-success btn-block"></input>
+							</div>
+						</form>
+
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+
+	</div><br><br>
+	<div class="espace"></div>
+	<div class="espace"></div>
+
+	<div class="espace"></div>
+
+</section>{% endblock %}{% block javascripts %}{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+
+{% block stylesheets %}
+
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style1.css')}}">
+
+{% endblock %}
+
+{% block body %}
+
+	<!-- Acceuil -->
+
+	<div class="row-fluid-wrapper  row-number-1">
+		<div class="hs_cos_wrapper_type_custom_widget">
+			<div class="top-field hide-bg-img-on-mobile" style="background-color: #fafafa; background-image: url(&#39;https://www.favro.com/hubfs/linee-2.svg&#39;)">
+				<div class="top-field__inner top-field__inner--short">
+					<div class="block__col block__col--text block__col--5">
+						<div class="top-field__container">
+							<h1 class="top-field__heading">
+								Logiciel de gestion de tâches.
+							</h1>
+
+							<p class="top-field__paragraph"></p>
+							<p style="text-align: justify;">Linkivia est une plateforme de travail collaboratif qui facilite l’organisation, la gestion et le suivi du travail en équipe en distanciel, depuis un ordinateur, un smartphone ou une tablette.
+							</p>
+							<p>&nbsp;</p>
+							<p></p>
+
+						</div>
+					</div>
+
+					<div class="block__col block__col--7">
+
+						<div class="video-lightbox ">
+
+							<img src="{{asset('images/acceuil/comp-hero.webp')}}">
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Fin Acceuil -->
+
+
+{% endblock %}
+{% block javascripts %}{% endblock %}
