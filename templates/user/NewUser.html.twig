@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style1.css')}}">
+
+
+{% endblock %}
+
+{% block body %}
+
+	<section class="section-inscription">
+
+		<div class="espace"></div>
+
+		<div class="container">
+			<div class="intro-text">
+				<br/>
+
+				<div class="col-sm-8 col-sm-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong>
+								Créer un nouvel utilisateur
+							</strong>
+						</div>
+						<div class="panel-body">
+							<br>
+							{{form_start(userForm)}}
+
+							<!-- First name -->
+							<div class="form-group has-feedback">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="glyphicon glyphicon-user"></i>
+									</span>
+									{{ form_widget(userForm.lastname, {'attr': {'class': 'form-control ','placeholder': 'Nom'}}) }}
+
+								</div>
+
+							</div>
+
+
+							<!-- Last name -->
+							<div class="form-group has-feedback">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="glyphicon glyphicon-user"></i>
+									</span>
+
+									{{ form_widget(userForm.firstname, {'attr': {'class': 'form-control ','placeholder': 'Prénom'}}) }}
+
+								</div>
+
+							</div>
+
+
+							<!-- Email adress -->
+							<div class="form-group has-feedback">
+								<div class="input-group">
+									<span class="input-group-addon">@</span>
+									{{ form_widget(userForm.email, {'attr': {'class': 'form-control ','placeholder': 'Email'}}) }}
+
+								</div>
+							</div>
+
+							<!-- Phone -->
+							<div class="form-group has-feedback">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="glyphicon glyphicon-phone"></i>
+									</span>
+									<span class="input-group-addon">+216</span>
+									{{ form_widget(userForm.phoneNumber, {'attr': {'class': 'form-control ','placeholder': 'Téléphone'}}) }}
+
+								</div>
+
+							</div>
+
+							<!-- Fonction -->
+							<div class="form-group has-feedback">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="fas fa-briefcase"></i>
+									</span>
+									{{ form_widget(userForm.city,{'attr':{'class':'form-control','placeholder':'ville'}})}}
+								</div>
+								<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+							</div>
+
+
+							<!-- Password -->
+							<div class="form-group has-feedback">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-lock"></i>
+									</span>
+									{{ form_widget(userForm.plainPassword, {'attr': {'class': 'form-control ','placeholder': 'Mot de passe'}}) }}
+
+								</div>
+							</div>
+							<!-- Message Errors-->
+							{% set formErrors = userForm.vars.errors.form.getErrors(true) %}
+
+							{% if formErrors|length %}
+								<div class="alert alert-danger">
+									<ul>
+										{% for error in formErrors %}
+											<li>
+												{{ error.message}}</li>
+										{% endfor %}
+									</ul>
+								</div>
+							{% endif %}
+							<!-- Button -->
+							<div class="form-group ">
+								<input id="submitForm" type="submit" value="Créer" class="btn btn-success btn-block"></input>
+						</div>
+
+						{{ form_widget(userForm._token) }}
+						<!-- render the CSRF Token-->
+
+						{{ form_end(userForm,{'render_rest': false})}}
+						<!-- do not render anything else-->
+
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+
+	</div><br><br>
+	<div class="espace"></div>
+
+</section>{% endblock %}{% block javascripts %}{% endblock %}

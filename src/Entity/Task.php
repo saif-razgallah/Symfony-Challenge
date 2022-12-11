@@ -2,10 +2,15 @@
 
 namespace App\Entity;
 
+//use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiResource;
+
 use App\Repository\TaskRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
+#[ApiResource]
 class Task
 {
     #[ORM\Id]
@@ -26,6 +31,7 @@ class Task
     private ?string $status = null;
 
     #[ORM\ManyToOne(inversedBy: 'tasks')]
+    #[ORM\JoinColumn(onDelete :'CASCADE')]
     private ?User $user_affect = null;
 
     public function getId(): ?int

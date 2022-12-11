@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project index
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style2.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style1.css')}}">
+{% endblock %}
+
+
+{% block body %}
+
+	<section class="section-inscription">
+		<div class="espace"></div>
+
+		<div class="container">
+			<h2 class="text-center mt-5 mb-3">Gestion des utilisateurs
+			</h2>
+			<div class="card">
+				<div class="card-header">
+					<a class="btn btn-outline-primary" href="{{path('new_user')}}">
+						Créer un nouvel utilsateur
+					</a>
+				</div>
+				<div class="card-body">
+					<table class="table table-bordered">
+						<tr>
+							<th>Nom</th>
+							<th>Prénom</th>
+							<th>Ville</th>
+							<th>Télephone</th>
+							<th>Email</th>
+							<th>Password</th>
+
+							<th width="240px">Action</th>
+						</tr>
+						{% for user in users %}
+							<tr>
+								<td>{{user.lastname }}</td>
+								<td>{{user.firstname}}</td>
+								<td>{{user.city}}</td>
+								<td>{{user.phoneNumber}}</td>
+								<td>{{user.email}}</td>
+								<td>{{user.password}}</td>
+								<td>
+
+									<form method="post" action="#" onsubmit="return confirm('Are you sure you want to delete this item?');">
+										<a class="btn btn-outline-danger" href="{{path('user_list.delete',{id: user.id})}}">
+											Supprimer
+										</a>
+									</form>
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="espace"></div>
+		<div class="espace"></div>
+
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{#{{ encore_entry_script_tags('app') }}#}
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+{% endblock %}

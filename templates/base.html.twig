@@ -57,7 +57,7 @@
 																		<a href="{{path('list_task')}}">Gestion des tâches</a>
 																	</li>
 																	<li class="hs-menu-item hs-menu-depth-1">
-																		<a href="#">Gestion des utilisateurs</a>
+																		<a href="{{path('list_user')}}">Gestion des utilisateurs</a>
 																	</li>
 
 																{% else %}
@@ -67,9 +67,9 @@
 
 																{% endif %}
 																<li class="hs-menu-item hs-menu-depth-1" style="text-decoration: none">
-																	<a href="{{path('app_logout')}}">Se déconnecter</a>
+																	<a href="{{path('app_logout')}}">Se déconnecter
+																	</a>
 																</li>
-
 															{% else %}
 																<li class="hs-menu-item hs-menu-depth-1" style="text-decoration: none">
 																	<a href="{{path('app_register')}}">S'inscrire</a>
